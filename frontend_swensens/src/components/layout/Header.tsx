@@ -10,7 +10,7 @@ import MobileNav from "./MobileNav";
 /* import Hamburger from "./Hamburger";
 import MobileMenu from "./MobileMenu"; */
 
-export const Header = () => {
+const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const handleHamburger = () => {
 		setIsOpen(!isOpen);
@@ -23,30 +23,14 @@ export const Header = () => {
 				<div className="container h-full flex justify-between items-center">
 					<div className="flex items-center gap-4 lg:flex-row-reverse">
 						{/* <Hamburger handleHamburger={handleHamburger} /> */}
-						<Link
-							to="/"
-							className="font-medium text-xl lg:text-3xl lg:font-semibold"
-						>
-							Mutayloo
+						<Link to="/th">
+							<img
+								src="/images/swensens-logo.png"
+								alt="logo"
+								className="w-10 h-10"
+							/>
 						</Link>
 					</div>
-
-					<nav className="hidden lg:block">
-						<ul className="flex gap-8 font-medium">
-							<li>
-								<Link to="/">Home</Link>
-							</li>
-							<li>
-								<Link to="/products">Products</Link>
-							</li>
-							<li>
-								<Link to="/horoscope">Horoscope</Link>
-							</li>
-							<li>
-								<Link to="/contact-us">Contact Us</Link>
-							</li>
-						</ul>
-					</nav>
 
 					<div className="flex gap-4 items-center">
 						<AiOutlineSearch className="w-6 h-6" />
@@ -64,3 +48,5 @@ export const Header = () => {
 		</>
 	);
 };
+
+export default Header;

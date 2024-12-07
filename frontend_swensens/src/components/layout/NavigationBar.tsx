@@ -5,7 +5,7 @@ import {
 	PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import { Menu, ShoppingCart, Globe } from "lucide-react";
+import { Menu, ShoppingBag, Globe } from "lucide-react";
 import MobileNav from "./MobileNav";
 
 const NavigationBar = () => {
@@ -21,15 +21,16 @@ const NavigationBar = () => {
 				<div className="flex items-center">
 					<a href="/th" className="mr-4 lg:mr-8">
 						<img
-							src="/images/swensens-logo.svg"
+							src="/images/Swensens-logo.svg"
 							alt="Swensens Logo"
 							className="h-8 lg:h-10"
 						/>
 					</a>
 				</div>
+
 				<div className="hidden space-x-4 lg:flex">
+					<ShoppingBag className="h-5 w-5" />
 					<Button variant="default" className="flex items-center space-x-2">
-						<ShoppingCart className="h-5 w-5" />
 						<span className="text-title-md-medium">
 							เข้าสู่ระบบ / ลงทะเบียน
 						</span>
@@ -55,7 +56,7 @@ const NavigationBar = () => {
 				</button>
 			</nav>
 
-			<MobileNav isOpen={isMenuOpen} />
+			<MobileNav isOpen={isMenuOpen} handleHamburger={toggleMenu} />
 		</header>
 	);
 };
