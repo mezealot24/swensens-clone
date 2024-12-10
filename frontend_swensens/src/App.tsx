@@ -1,19 +1,17 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/layout/Home";
 import Footer from "./components/layout/Footer";
-import Header from "./components/layout/Header";
+import { Header } from "./components/layout/Header";
 function App() {
 	return (
 		<BrowserRouter>
 			<Header />
-
-			<main className="flex-1">
+			<main className="relative flex min-h-screen flex-col bg-background">
 				<Routes>
 					<Route path="/" element={<Home />} />
 					{/* เพิ่ม routes อื่นๆ ตามต้องการ */}
 				</Routes>
 			</main>
-
 			<Footer />
 		</BrowserRouter>
 	);

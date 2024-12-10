@@ -17,14 +17,22 @@ const HeaderActions = () => {
 
 	return (
 		<>
-			<div className="hidden lg:flex items-center justify-center space-x-8">
+			<div className="hidden lg:flex items-center justify-between space-x-8">
 				{/* Shopping bag section */}
-				<div className="flex items-center">
-					<ShoppingBag className="h-5 w-5" />
-				</div>
+				<button
+					type="button"
+					className="relative max-w-full cursor-pointer space-x-8 font-semibold disabled:cursor-not-allowed disabled:fill-text-disabled disabled:text-text-disabled p-0 h-10 px-4 py-2 text-title-md-medium leading-[22px] md:h-12 md:py-3 md:text-title-md-medium md:leading-[22px] ml-2"
+					tabIndex={0}
+				>
+					<div className="flex items-center justify-center">
+						<div className="relative flex items-center justify-center">
+							<ShoppingBag className="h-5 w-5" />
+						</div>
+					</div>
+				</button>
 
 				{/* Login button section */}
-				<div className="flex items-center">
+				<div className="flex items-center space-x-2">
 					<Button
 						variant="default"
 						className="flex items-center space-x-2 rounded-full text-lg"
@@ -36,7 +44,7 @@ const HeaderActions = () => {
 				</div>
 
 				{/* Language selector section */}
-				<div className="flex items-center">
+				<div className="flex items-center space-x-2	">
 					<Popover>
 						<PopoverTrigger asChild>
 							<Button variant="ghost" className="flex items-center space-x-2">
