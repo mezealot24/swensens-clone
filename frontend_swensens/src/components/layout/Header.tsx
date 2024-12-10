@@ -15,19 +15,19 @@ export const Header: React.FC = () => {
 
 	return (
 		<>
-			<header className="sticky z-50 top-0 flex lg:mx-24 mx-4 items-center justify-between bg-white border-b border-[#FFF5F5] p-4 shadow-sm">
-				<section className="flex items-center w-full max-w-[1200px]">
-					{/* Logo */}
-					<div className="flex items-center ">
+			<header className="site-header sticky top-0 z-20 hidden h-[80px] w-full gap-8 bg-background-white px-16 [box-shadow:0_2px_15px_rgba(0,0,0,.05)] lg:flex">
+				<section className="relative container flex items-center mx-auto w-full max-w-screen-2xl">
+					<div className="container mx-auto flex justify-between items-center">
+						{/* Logo */}
 						<img
 							src="/swensens-logo.png"
 							alt="Swensen's"
 							className="h-10 w-auto"
 						/>
+
+						<HeaderActions />
 					</div>
 				</section>
-
-				<HeaderActions />
 			</header>
 		</>
 	);

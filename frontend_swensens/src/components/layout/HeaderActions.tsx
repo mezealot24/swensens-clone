@@ -17,7 +17,7 @@ const HeaderActions = () => {
 
 	return (
 		<>
-			<div className="hidden lg:flex items-center justify-between space-x-8">
+			<div className="hidden lg:flex items-center justify-end space-x-8">
 				{/* Shopping bag section */}
 				<button
 					type="button"
