@@ -1,14 +1,8 @@
 import { useState } from "react";
+
+import HeaderActions from "./HeaderActions";
+
 import { Link } from "react-router-dom";
-import {
-	AiOutlineSearch,
-	AiOutlineUser,
-	AiOutlineHeart,
-	AiOutlineShoppingCart,
-} from "react-icons/ai";
-import MobileNav from "./MobileNav";
-/* import Hamburger from "./Hamburger";
-import MobileMenu from "./MobileMenu"; */
 
 const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -19,32 +13,20 @@ const Header = () => {
 
 	return (
 		<>
-			<header className="bg-white h-[60px] lg:h-[68px] shadow-lg sticky top-0 z-20">
-				<div className="container h-full flex justify-between items-center">
-					<div className="flex items-center gap-4 lg:flex-row-reverse">
-						{/* <Hamburger handleHamburger={handleHamburger} /> */}
-						<Link to="/th">
+			<header className="sticky top-0 z-20 hidden h-[80px] w-full gap-8 bg-background-white px-16 [box-shadow:0_2px_15px_rgba(0,0,0,.05)] lg:flex">
+				<nav className="relative mx-auto w-full max-w-screen-2xl px-24 flex justify-between items-center">
+					<div className="flex w-full items-center justify-between mx-auto px-24">
+						<Link to="/">
 							<img
-								src="/images/swensens-logo.png"
+								src="/images/Swensens-logo.svg"
 								alt="logo"
-								className="w-10 h-10"
+								className="h-8 lg:h-10"
 							/>
 						</Link>
+						<HeaderActions />
 					</div>
-
-					<div className="flex gap-4 items-center">
-						<AiOutlineSearch className="w-6 h-6" />
-						<Link to="/account">
-							<AiOutlineUser className="w-6 h-6 hidden lg:block" />
-						</Link>
-						<AiOutlineHeart className="w-6 h-6 hidden lg:block" />
-						<Link to="/cart">
-							<AiOutlineShoppingCart className="w-6 h-6" />
-						</Link>
-					</div>
-				</div>
+				</nav>
 			</header>
-			<MobileNav isOpen={isOpen} handleHamburger={handleHamburger} />
 		</>
 	);
 };
