@@ -15,12 +15,12 @@ export const Header: React.FC = () => {
 
 	return (
 		<>
-			<header className="site-header sticky top-0 z-20 hidden h-[80px] w-full gap-8 bg-background-white px-16 [box-shadow:0_2px_15px_rgba(0,0,0,.05)] lg:flex">
-				<section className="relative container flex items-center mx-auto w-full max-w-screen-2xl">
+			<header className="sticky top-0 z-20 hidden h-[80px] w-full gap-8 lg:flex">
+				<section className="relative flex items-center mx-auto w-full max-w-screen-2xl px-4">
 					<div className="container mx-auto flex justify-between items-center">
 						{/* Logo */}
 						<img
-							src="/swensens-logo.png"
+							src="/images/Swensens-logo.svg"
 							alt="Swensen's"
 							className="h-10 w-auto"
 						/>

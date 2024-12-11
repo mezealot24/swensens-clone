@@ -19,7 +19,7 @@ const MobileNav = ({ isOpen, handleHamburger }: MobileNavProps) => {
 			<div className="container px-4 py-6 space-y-4">
 				{/* Shopping Cart */}
 				<div className="flex items-center justify-between p-3 bg-secondary rounded-lg">
-					<ShoppingCart className="h-5 w-5 text-primary" />
+					<ShoppingCart className="h-10 w-10 text-primary" />
 					<span className="text-sm font-medium">ตะกร้าสินค้า</span>
 				</div>
 

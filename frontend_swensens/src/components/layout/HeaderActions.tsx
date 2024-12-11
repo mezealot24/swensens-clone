@@ -19,17 +19,13 @@ const HeaderActions = () => {
 		<>
 			<div className="hidden lg:flex items-center justify-end space-x-8">
 				{/* Shopping bag section */}
-				<button
-					type="button"
-					className="relative max-w-full cursor-pointer space-x-8 font-semibold disabled:cursor-not-allowed disabled:fill-text-disabled disabled:text-text-disabled p-0 h-10 px-4 py-2 text-title-md-medium leading-[22px] md:h-12 md:py-3 md:text-title-md-medium md:leading-[22px] ml-2"
+				<Button
+					variant="ghost"
+					className="relative max-w-full cursor-pointer"
 					tabIndex={0}
 				>
-					<div className="flex items-center justify-center">
-						<div className="relative flex items-center justify-center">
-							<ShoppingBag className="h-5 w-5" />
-						</div>
-					</div>
-				</button>
+					<ShoppingBag className="h-8 w-8" />
+				</Button>
 
 				{/* Login button section */}
 				<div className="flex items-center space-x-2">
