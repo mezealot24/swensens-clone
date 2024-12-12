@@ -7,9 +7,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { Menu, ShoppingBag, Globe } from "lucide-react";
 import MobileNav from "./MobileNav";
+import { LoginModal } from "../auth/LoginModal";
 
 const HeaderActions = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const [isLoginOpen, setIsLoginOpen] = useState(false);
 
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
@@ -32,6 +34,7 @@ const HeaderActions = () => {
 					<Button
 						variant="default"
 						className="flex items-center space-x-2 rounded-full text-lg"
+						onClick={() => setIsLoginOpen(true)}
 					>
 						<span className="text-title-md-medium">
 							เข้าสู่ระบบ / ลงทะเบียน
@@ -61,6 +64,8 @@ const HeaderActions = () => {
 			>
 				<Menu className="h-6 w-6 text-text-primary" />
 			</button>
+
+			<LoginModal isOpen={isLoginOpen} onOpenChange={setIsLoginOpen} />
 
 			<MobileNav isOpen={isMenuOpen} handleHamburger={toggleMenu} />
 		</>

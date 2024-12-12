@@ -80,3 +80,11 @@
            focus:ring-2 focus:ring-primary focus:outline-none;
 	}
 }
+
+.whitespace-pre-wrap {
+	white-space: pre-wrap;
+}
+
+.break-words {
+	word-wrap: break-word;
+}
