@@ -22,9 +22,12 @@ module.exports = {
 			lg: "960px",
 			xl: "1200px",
 		},
+
 		fontFamily: {
-			primary: "var(--font-jetbrainsMono)",
+			primary: ["Kanit", "sans-serif"],
+			secondary: ["Poppins", "sans-serif"],
 		},
+
 		extend: {
 			colors: {
 				border: "hsl(var(--border))",
