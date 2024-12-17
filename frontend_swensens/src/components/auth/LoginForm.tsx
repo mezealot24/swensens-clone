@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import {
 	Form,
 	FormControl,
-	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
@@ -15,8 +14,8 @@ import {
 import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
-	email: z.string().email("Please enter a valid email address."),
-	password: z.string().min(8, "Password must be at least 8 characters long."),
+	email: z.string().email("กรุณากรอกอีเมลให้ถูกต้อง."),
+	password: z.string().min(8, "กรุณากรอกรหัสผ่านให้ถูกต้อง."),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -30,7 +29,7 @@ export function LoginForm() {
 		},
 	});
 
-	const onSubmit = (data: FormData) => {
+	const onSubmit = async (data: FormData): Promise<void> => {
 		console.log(data);
 		// Implement your login logic here
 	};
@@ -70,7 +69,15 @@ export function LoginForm() {
 						</FormItem>
 					)}
 				/>
-				<Button type="submit">Submit</Button>
+				<div className="flex flex-col gap-2">
+					<Button variant="link" className="text-sm text-blue-600 self-start">
+						ลืมรหัสผ่าน?
+					</Button>
+
+					<Button type="submit" className="w-full rounded-full">
+						เข้าสู่ระบบ
+					</Button>
+				</div>
 			</form>
 		</Form>
 	);

@@ -5,6 +5,7 @@
 @layer base {
 	:root {
 		--font-th-kanit: "Kanit", sans-serif;
+		--font-en-poppins: "Poppins", sans-serif;
 
 		--background: 0 0% 100%;
 		--foreground: 240 10% 3.9%;

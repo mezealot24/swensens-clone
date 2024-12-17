@@ -23,12 +23,11 @@ module.exports = {
 			xl: "1200px",
 		},
 
-		fontFamily: {
-			primary: ["Kanit", "sans-serif"],
-			secondary: ["Poppins", "sans-serif"],
-		},
-
 		extend: {
+			fontFamily: {
+				kanit: ["Kanit", "sans-serif"],
+				poppins: ["Poppins", "sans-serif"],
+			},
 			colors: {
 				border: "hsl(var(--border))",
 				input: "hsl(var(--input))",
