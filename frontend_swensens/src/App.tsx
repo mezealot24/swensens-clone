@@ -6,19 +6,29 @@ import { BodyContainer } from "./components/layout/Body";
 function App() {
 	return (
 		<BrowserRouter>
-			<div className="w-full h-full">
-				{/* Header จะจัดการทั้ง Desktop และ Mobile แล้ว */}
-				<Header />
+			{/* Full-width container */}
+			<div className="min-h-screen flex flex-col">
+				{/* Header with full width and centered content */}
+				<div className="w-full bg-white">
+					<Header />
+				</div>
 
-				{/* Main Content */}
-				<main className="relative flex flex-1 flex-col bg-background">
-					<BodyContainer />
-					<Routes>
-						<Route path="/" />
-					</Routes>
+				{/* Main content with full width and centered content */}
+				<main className="flex-1 w-full bg-background">
+					<div className="max-w-7xl mx-auto">
+						<BodyContainer />
+						<Routes>
+							<Route path="/" />
+						</Routes>
+					</div>
 				</main>
 
-				<Footer />
+				{/* Footer with full width and centered content */}
+				<div className="w-full bg-white">
+					<div className="max-w-7xl mx-auto">
+						<Footer />
+					</div>
+				</div>
 			</div>
 		</BrowserRouter>
 	);
