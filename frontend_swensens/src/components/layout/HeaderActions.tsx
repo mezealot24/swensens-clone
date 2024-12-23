@@ -2,8 +2,7 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Menu, ShoppingBag, Globe } from "lucide-react";
-import { MobileNav } from "./MobileNav";
-import { LoginModal } from "../auth/LoginModal";
+import { LoginModal } from "@/pages/auth/LoginModal";
 
 const HeaderActions = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
