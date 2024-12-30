@@ -1,4 +1,4 @@
-"use client";
+//src/components/auth/PasswordInput.tsx
 
 import * as React from "react";
 import { EyeIcon, EyeOffIcon } from "lucide-react";

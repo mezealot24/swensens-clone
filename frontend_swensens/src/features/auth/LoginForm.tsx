@@ -1,7 +1,9 @@
+//src/components/auth/LoginForm.tsx
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { PasswordInput } from "@/pages/auth/Password-input";
+import { PasswordInput } from "./PasswordInput";
 import { Button } from "@/components/ui/button";
 import {
 	Form,

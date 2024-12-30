@@ -1,11 +1,21 @@
-import { RouterProvider } from "react-router-dom";
-import { AuthProvider } from "./auth/AuthProvider";
-import { router } from "@/routes";
+import { BrowserRouter } from "react-router-dom";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer/index";
+import Home from "@/pages/Home";
 
-export default function App() {
+function App() {
 	return (
-		<AuthProvider>
-			<RouterProvider router={router} />
-		</AuthProvider>
+		<>
+			<BrowserRouter>
+				<Header />
+				<main className="flex-1">
+					<Home />
+				</main>
+
+				<Footer />
+			</BrowserRouter>
+		</>
 	);
 }
+
+export default App;

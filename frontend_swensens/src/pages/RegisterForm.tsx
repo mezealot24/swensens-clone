@@ -126,3 +126,5 @@ export function RegisterForm() {
 		</section>
 	);
 }
+
+export default RegisterForm;
