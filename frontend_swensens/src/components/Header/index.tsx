@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
 	return (
-		<header className="sticky top-0 z-50">
+		<header className="sticky top-0 z-20  w-full [box-shadow:0_2px_15px_rgba(0,0,0,.05)] ">
 			<div className="bg-white shadow-md">
 				<div className="container flex items-center justify-between py-2">
 					<div className="col1 w-[15%]">
