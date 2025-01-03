@@ -1,8 +1,8 @@
-import { RegisterForm } from "@/components/auth/RegisterForm";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { PATHS } from "@/routes/paths";
+import { PATHS } from "@/config/routes";
+import { RegisterForm } from "@/features/auth/RegisterForm";
 
 export function RegisterPage() {
 	return (

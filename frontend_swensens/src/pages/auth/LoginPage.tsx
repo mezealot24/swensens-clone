@@ -1,8 +1,8 @@
-import { LoginForm } from "@/components/auth/LoginForm";
+import { LoginForm } from "@/features/auth/LoginForm";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { PATHS } from "@/routes/paths";
+import { PATHS } from "@/config/routes";
 
 export function LoginPage() {
 	return (

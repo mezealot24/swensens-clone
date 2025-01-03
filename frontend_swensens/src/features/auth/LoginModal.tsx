@@ -1,11 +1,8 @@
 //src/components/auth/LoginModal.tsx
-
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
-	DialogClose,
 	DialogContent,
-	DialogFooter,
 	DialogHeader,
 	DialogTitle,
 } from "@/components/ui/dialog";
@@ -21,22 +18,25 @@ export function LoginModal({ isOpen, onOpenChange }: LoginModalProps) {
 		<Dialog open={isOpen} onOpenChange={onOpenChange}>
 			<DialogContent className="sm:max-w-md">
 				<DialogHeader>
-					<DialogTitle className="max-w-full text-4xl font-primary font-semibold leading-loose text-gray-600">
-						ยินดีต้อนรับสมาชิก Swensen's เข้าสู่ระบบ แล้วเริ่มสั่งไอศกรีมกันเลย!
+					<DialogTitle className="whitespace-normal text-gray-600">
+						ยินดีต้อนรับสมาชิก Swensen's <br />
+						เข้าสู่ระบบแล้วเริ่มสั่งไอศกรีมกันเลย!
 					</DialogTitle>
 				</DialogHeader>
-				<div className="flex items-center space-x-2">
-					<div className="grid flex-1 gap-2">
-						<LoginForm />
-					</div>
-				</div>
-				<div className="w-full flex justify-center">
-					<span className="text-sm text-gray-600">
-						ยังไม่มีบัญชีใช่หรือไม่?
-						<Button variant="link" className="text-sm text-blue-600">
-							สร้างบัญชี
-						</Button>
-					</span>
+
+				<LoginForm />
+
+				<div className="text-center text-gray-600 text-sm">
+					<span>ยังไม่มีบัญชีใช่หรือไม่ </span>
+					<Button
+						variant="ghost"
+						className="text-blue-600 p-2 h-auto font-normal hover:bg-transparent hover:text-blue-600"
+						onClick={() => {
+							/* Handle registration */
+						}}
+					>
+						สมัครสมาชิก
+					</Button>
 				</div>
 			</DialogContent>
 		</Dialog>

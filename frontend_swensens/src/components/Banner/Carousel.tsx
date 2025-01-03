@@ -15,15 +15,11 @@ const banners = [
 	{
 		id: 1,
 		type: "image",
-		title: "สเวนเซ่นส์ส่งถึงบ้าน",
-		description: "เย็นฉ่ำ อร่อยถึงบ้านคุณ",
-		image: "/images/banners/banner1.jpg",
+		image: "/images/banners/banner01.jpeg",
 	},
 	{
 		id: 2,
 		type: "image",
-		title: "โปรโมชั่นพิเศษ",
-		description: "ลด 20% เมื่อสั่งผ่านแอพ",
 		image: "/images/banners/banner2.jpg",
 	},
 	{
@@ -58,29 +54,19 @@ export function Carousel() {
 	const renderSlide = (banner: (typeof banners)[0], index: number) => {
 		if (banner.type === "image") {
 			return (
-				<div className="relative h-[300px] lg:h-[400px]">
+				<div className="relative w-full aspect-[3/1] sm:aspect-[4/1]">
 					<img
 						src={banner.image}
-						alt={banner.title}
-						className="w-full h-full object-cover"
+						alt={`Banner ${banner.id}`}
+						className="w-full h-full object-cover rounded-md 2xl:rounded-2xl"
 					/>
-					<div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent">
-						<div className="absolute bottom-10 left-10 text-white">
-							<h2 className="text-3xl lg:text-5xl font-bold mb-2 font-kanit">
-								{banner.title}
-							</h2>
-							<p className="text-lg lg:text-xl font-kanit">
-								{banner.description}
-							</p>
-						</div>
-					</div>
 				</div>
 			);
 		}
 
 		return (
-			<div className="relative h-[300px] lg:h-[400px]">
-				<div className="absolute inset-0 bg-pink-100 rounded-lg overflow-hidden">
+			<div className="relative w-full aspect-[3/1] sm:aspect-[4/1]">
+				<div className="absolute inset-0 bg-pink-100 rounded-md 2xl:rounded-2xl">
 					{/* Background Pattern */}
 					<div className="absolute inset-0 opacity-10">
 						{[...Array(20)].map((_, i) => (
@@ -108,7 +94,7 @@ export function Carousel() {
 
 					{/* Main Content */}
 					<div className="absolute inset-0 flex items-center">
-						<div className="w-full px-8 lg:px-12">
+						<div className="w-full px-8 lg:px-16">
 							<div className="max-w-2xl">
 								<motion.div
 									initial={{ opacity: 0, x: -20 }}
@@ -176,48 +162,50 @@ export function Carousel() {
 	};
 
 	return (
-		<div className="relative">
-			<div ref={emblaRef} className="overflow-hidden rounded-lg">
-				<div className="flex">
-					{banners.map((banner, index) => (
-						<motion.div
-							key={banner.id}
-							className="relative flex-[0_0_100%]"
-							initial={{ opacity: 0 }}
-							animate={{ opacity: selectedIndex === index ? 1 : 0 }}
-							exit={{ opacity: 0 }}
-							transition={{ duration: 0.5 }}
-						>
-							{renderSlide(banner, index)}
-						</motion.div>
-					))}
+		<div>
+			<div className="relative">
+				<div ref={emblaRef} className="overflow-hidden rounded-lg">
+					<div className="flex">
+						{banners.map((banner, index) => (
+							<motion.div
+								key={banner.id}
+								className="relative flex-[0_0_100%]"
+								initial={{ opacity: 0 }}
+								animate={{ opacity: selectedIndex === index ? 1 : 0 }}
+								exit={{ opacity: 0 }}
+								transition={{ duration: 0.5 }}
+							>
+								{renderSlide(banner, index)}
+							</motion.div>
+						))}
+					</div>
 				</div>
+
+				<Button
+					variant="outline"
+					size="icon"
+					className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white"
+					onClick={scrollPrev}
+				>
+					<ChevronLeft className="h-4 w-4" />
+				</Button>
+
+				<Button
+					variant="outline"
+					size="icon"
+					className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white"
+					onClick={scrollNext}
+				>
+					<ChevronRight className="h-4 w-4" />
+				</Button>
 			</div>
 
-			<Button
-				variant="outline"
-				size="icon"
-				className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white"
-				onClick={scrollPrev}
-			>
-				<ChevronLeft className="h-4 w-4" />
-			</Button>
-
-			<Button
-				variant="outline"
-				size="icon"
-				className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white"
-				onClick={scrollNext}
-			>
-				<ChevronRight className="h-4 w-4" />
-			</Button>
-
-			<div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+			<div className="flex justify-center gap-2 mt-4">
 				{banners.map((_, index) => (
 					<button
 						key={index}
 						className={`h-2 w-2 rounded-full transition-colors ${
-							selectedIndex === index ? "bg-white" : "bg-white/50"
+							selectedIndex === index ? "bg-primary" : "bg-accent"
 						}`}
 						onClick={() => emblaApi?.scrollTo(index)}
 					/>

@@ -36,7 +36,7 @@ const DialogContent = React.forwardRef<
 		<DialogPrimitive.Content
 			ref={ref}
 			className={cn(
-				"fixed left-[50%] top-[50%] z-50 grid w-full max-w-[60vh] h-4/5 translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-8 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
+				"fixed left-[50%] top-[50%] z-50 grid min-w-2 max-w-[calc(100vw-30px)] h-3/4 translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-12 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg",
 				className
 			)}
 			{...props}
@@ -80,8 +80,8 @@ const DialogTitle = React.forwardRef<
 	<DialogPrimitive.Title
 		ref={ref}
 		className={cn(
-			"text-4xl font-semibold leading-none tracking-tight",
-			"w-full whitespace-pre-wrap text-display-small text-text-primary break-words",
+			"text-3xl font-semibold leading-tight tracking-[0.05em]", // ปรับ tracking เป็นค่าลบเพื่อให้ตัวอักษรชิดกันมากขึ้น
+			"w-full whitespace-pre-wrap break-words",
 			className
 		)}
 		{...props}

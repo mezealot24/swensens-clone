@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { PasswordInput } from "./PasswordInput";
 import { Button } from "@/components/ui/button";
 import {
 	Form,
@@ -11,11 +10,13 @@ import {
 	FormField,
 	FormItem,
 	FormLabel,
-	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/features/auth/PasswordInput";
+import { useAuth } from "@/features/auth/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
-const formSchema = z.object({
+const loginSchema = z.object({
 	email: z
 		.string()
 		.trim()
@@ -24,98 +25,97 @@ const formSchema = z.object({
 	password: z
 		.string()
 		.trim()
-		.min(8, { message: "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร" })
-		.max(50, { message: "รหัสผ่านต้องไม่เกิน 50 ตัวอักษร" }),
+		.min(8, { message: "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร" }),
 });
 
-type FormData = z.infer<typeof formSchema>;
+type LoginFormData = z.infer<typeof loginSchema>;
 
 export function LoginForm() {
-	const form = useForm<FormData>({
-		resolver: zodResolver(formSchema),
-		mode: "onSubmit", // Validate only on form submission
+	const { login } = useAuth();
+	const navigate = useNavigate();
+	const form = useForm<LoginFormData>({
+		resolver: zodResolver(loginSchema),
 		defaultValues: {
 			email: "",
 			password: "",
 		},
 	});
 
-	const onSubmit = async (data: FormData): Promise<void> => {
+	const onSubmit = async (data: LoginFormData) => {
 		try {
-			// Sanitize data before processing
-			const sanitizedData = {
-				email: data.email.trim(),
-				password: data.password.trim(),
-			};
-
-			console.log(sanitizedData);
-			// Implement your login logic here
-			// For example:
-			// const response = await login(sanitizedData);
+			await login(data.email, data.password);
+			navigate("/");
 		} catch (error) {
-			// Handle login error
-			console.error("Login failed", error);
+			console.error("Login failed:", error);
 		}
 	};
 
 	return (
 		<Form {...form}>
-			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-				<FormField
-					control={form.control}
-					name="email"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel className="flex text-xl">
-								อีเมล
-								<div className="text-red-500 text-sm">*</div>
-							</FormLabel>
-							<FormControl className="h-12">
-								<Input
-									placeholder="อีเมลของคุณ"
-									{...field}
-									autoComplete="email"
-									// Remove error display during typing
-									onBlur={field.onBlur}
-								/>
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
-					name="password"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel className="flex text-xl ">
-								รหัสผ่าน
-								<div className="text-red-500 text-sm">*</div>
-							</FormLabel>
-							<FormControl className="h-12">
-								<PasswordInput
-									placeholder="รหัสผ่านของคุณ"
-									{...field}
-									autoComplete="current-password"
-								/>
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
-				<div className="flex flex-col gap-2">
-					<Button
-						type="button"
-						variant="link"
-						className="text-sm text-blue-600 self-start"
-					>
-						ลืมรหัสผ่าน?
-					</Button>
-
-					<Button type="submit" className="w-full rounded-full">
-						เข้าสู่ระบบ
-					</Button>
+			<form
+				onSubmit={form.handleSubmit(onSubmit)}
+				className="flex flex-col gap-4"
+			>
+				<div className="space-y-2">
+					<FormField
+						control={form.control}
+						name="email"
+						render={({ field }) => (
+							<FormItem>
+								<div className="flex items-center gap-0.5">
+									<FormLabel className="text-sm font-normal">อีเมล</FormLabel>
+									<span className="text-red-500">*</span>
+								</div>
+								<FormControl>
+									<Input
+										placeholder="อีเมล"
+										className="h-11 px-4 rounded-sm"
+										{...field}
+									/>
+								</FormControl>
+							</FormItem>
+						)}
+					/>
 				</div>
+
+				<div className="space-y-2">
+					<FormField
+						control={form.control}
+						name="password"
+						render={({ field }) => (
+							<FormItem>
+								<div className="flex items-center gap-0.5">
+									<FormLabel className="text-sm font-normal">
+										รหัสผ่าน
+									</FormLabel>
+									<span className="text-red-500">*</span>
+								</div>
+								<FormControl>
+									<PasswordInput
+										placeholder="รหัสผ่าน"
+										className="h-11 px-4 rounded-sm"
+										{...field}
+									/>
+								</FormControl>
+							</FormItem>
+						)}
+					/>
+				</div>
+
+				<Button
+					variant="link"
+					type="button"
+					className="text-blue-600 self-start p-0 h-8 text-sm hover:underline"
+				>
+					ลืมรหัสผ่าน?
+				</Button>
+
+				<Button
+					variant="default"
+					className="h-12 px-12 py-3 rounded-3xl bg-swensens-red hover:bg-primary-light focus:ring-2 focus:ring-primary-dark disabled:bg-muted text-white font-semibold font-kanit text-lg md:text-xl"
+				>
+					เข้าสู่ระบบ
+				</Button>
 			</form>
 		</Form>
 	);
